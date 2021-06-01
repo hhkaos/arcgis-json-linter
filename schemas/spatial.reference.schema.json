@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/hhkaos/arcgis-json-schemas/spatial.reference.schema.json",
+    "title": "Spatial Referece",
+    "description": "Is a set of parameters, typically defined by a WKID, that define the coordinate system and spatial properties for geographic data",
+    "type": "object",
+    "properties": {
+        "wkid": {
+            "description": "The well-known ID of a spatial reference.",
+            "type": "number"
+        }
+    },
+    "required": ["wkid"]
+}

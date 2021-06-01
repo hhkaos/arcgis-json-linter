@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>ArcGIS JSON schema validator</title>
+
+    <script type="module"
+            src="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.esm.js"></script>
+    <script nomodule=""
+            src="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.js"></script>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+    <style>
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 20px;
+            color: #333;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            background-color: #eee;
+            background-image: linear-gradient(#fcfcfc, #eee);
+            border: 1px solid #d5d5d5;
+            border-radius: 3px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-appearance: none;
+        }
+
+        .example p {
+            color: #666
+        }
+
+
+        pre {
+            margin: 0;
+            padding: 0;
+        }
+
+        .example+.snippet {
+            background: #f8f8f8;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            clear: both;
+            /* top: -20px; */
+            /* padding: 20px 0 0 */
+        }
+
+        .snippet {
+            position: relative;
+            overflow: visible;
+            min-height: 0;
+        }
+
+        .snippet code {
+            font-size: 14px;
+            line-height: 20px
+        }
+
+        .snippet .btn {
+            -webkit-transition: opacity .3s ease-in-out;
+            -o-transition: opacity .3s ease-in-out;
+            transition: opacity .3s ease-in-out;
+            opacity: 0;
+            padding: 2px 6px;
+            position: absolute;
+            right: 4px;
+            top: 4px
+        }
+
+        .snippet:hover .btn,
+        .snippet .btn:focus {
+            opacity: 1
+        }
+
+        @media screen and (max-width: 768px) {
+            .snippet .btn {
+                opacity: 1
+            }
+        }
+
+        .example+.snippet .btn {
+            top: 22px;
+            right: 2px
+        }
+    </style>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://js.arcgis.com/calcite-components/1.0.0-beta.52/calcite.css" />
+    <style>
+        textarea {
+            height: 300px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>ArcGIS JSON schema validator</h1>
+
+        <form action="#">
+
+            <calcite-label>Select an schema:</label>
+                <calcite-select>
+                    <calcite-option-group label="Geometries">
+                        <calcite-option selected>Extent</calcite-option>
+                        <calcite-option>Spatial Reference</calcite-option>
+                    </calcite-option-group>
+                    <calcite-option-group label="Symbols">
+                        <calcite-option>CIM Symbols</calcite-option>
+                        <calcite-option>Picture Fill Symbols (esriPFS)</calcite-option>
+                        <calcite-option>Picture Marker Symbol (esriPMS)</calcite-option>
+                        <calcite-option>Simple Fill Symbol (esriSFS)</calcite-option>
+                        <calcite-option>Simple Line Symbol (esriSLS)</calcite-option>
+                        <calcite-option>Simple Marker Symbol (esriSMS)</calcite-option>
+                        <calcite-option>Text Symbol (esriTS)</calcite-option>
+                    </calcite-option-group>
+                    <calcite-option-group label="Renderers">
+                        <calcite-option>ClassBreaksRenderer</calcite-option>
+                        <calcite-option>DictionaryRenderer</calcite-option>
+                        <calcite-option>DotDensityRenderer</calcite-option>
+                        <calcite-option>HeatmapRenderer</calcite-option>
+                        <calcite-option>PointCloudClassBreaksRenderer</calcite-option>
+                        <calcite-option>PointCloudRenderer</calcite-option>
+                        <calcite-option>PointCloudRGBRenderer</calcite-option>
+                    </calcite-option-group>
+                    <calcite-option-group label="REST Services">
+                        <calcite-option>Feature Service</calcite-option>
+                        <calcite-option>Feature Layer</calcite-option>
+                        <calcite-option>Feature Table</calcite-option>
+                        <calcite-option>Feature Service View</calcite-option>
+                        <calcite-option>Analysis Services</calcite-option>
+                    </calcite-option-group>
+                    <calcite-option-group label="Other specs">
+                        <calcite-option>Web Map</calcite-option>
+                        <calcite-option>Web Scene</calcite-option>
+                        <calcite-option>i3s</calcite-option>
+                        <calcite-option>Oriented Imagery Catalog</calcite-option>
+                    </calcite-option-group>
+                </calcite-select>
+            </calcite-label>
+
+            <calcite-label>Add your JSON
+                <calcite-input placeholder=""
+                               type="textarea"
+                               class="textarea"
+                               id="input">
+
+                </calcite-input>
+
+            </calcite-label>
+            <calcite-notice color="red"
+                            id="notice">
+                <div slot="notice-title">Notice title</div>
+                <div slot="notice-message">Notice message lorem ipsum</div>
+                <!-- <calcite-link slot="notice-link"
+                              title="my action">Link slot</calcite-link> -->
+            </calcite-notice>
+            <p>Example</p>
+            <div class="example">
+                <div class="snippet">
+                    <pre><button class="btn" data-clipboard-target="#clipboard">
+                            <img class="clippy" width="13" src="images/clippy.svg" alt="Copy to clipboard">
+                        </button><code class="js" id="clipboard">{
+    "xmin":-9177811,
+    "ymin":4247000,
+    "xmax":-9176791,
+    "ymax":4247784,
+    "spatialReference":102100
+}</code>
+        </pre>
+                </div>
+            </div>
+
+
+            <calcite-button type="button"
+                            icon-start="search"
+                            id="validationForm">Validate</calcite-button>
+
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>hljs.highlightAll();</script>
+    <script>
+        new ClipboardJS('.btn');
+
+
+        const el = document.getElementById("validationForm");
+        el.addEventListener('click', (evt) => {
+            let params;
+            try {
+                const inputValue = document.querySelector("#input textarea").value
+                console.log(inputValue)
+                params = JSON.parse(inputValue)
+            } catch (err) {
+
+                if (err.toString().indexOf("SyntaxError") !== -1) {
+                    document.querySelector('#notice').setAttribute("active", "")
+                    document.querySelector('#notice').setAttribute("color", "blue")
+                    document.querySelector('#notice [slot="notice-title"]').innerText = "Error";
+                    document.querySelector('#notice [slot="notice-message"]').innerText = "JSON is not valid";
+                }
+
+            }
+            console.log("llego")
+
+            evt.preventDefault();
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/validate", true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(params));
+
+            xhr.onreadystatechange = (e) => {
+                const response = JSON.parse(xhr.responseText);
+                if (response.message === "Valid schema") {
+                    document.querySelector('#notice').setAttribute("active", "")
+                    document.querySelector('#notice').setAttribute("color", "blue")
+                    document.querySelector('#notice [slot="notice-title"]').innerText = "Validation passed";
+                    document.querySelector('#notice [slot="notice-message"]').innerText = "Your schema is valid";
+                } else {
+                    document.querySelector('#notice').setAttribute("active", "")
+                    document.querySelector('#notice').setAttribute("color", "red")
+                    document.querySelector('#notice [slot="notice-title"]').innerText = "Validation failed";
+                    let msg = '';
+                    response.forEach(el => {
+                        msg += `${response[0].instancePath} ${response[0].message}. `;
+                    });
+
+                    document.querySelector('#notice [slot="notice-message"]').innerText = msg;
+                }
+                console.log(response)
+            }
+
+
+            return false;
+        })
+    </script>
+
+</body>
+
+</html>
