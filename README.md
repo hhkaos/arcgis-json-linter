@@ -1,5 +1,4 @@
-# ArcGISJSON Schema
-
+# ArcGISJSON Linter
 This repository provides tools for building JSON Schema docs for ArcGISJSON. A schema is generated for each of the ArcGISJSON object types
 
 [Parser](./index.html)
