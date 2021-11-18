@@ -1,13 +1,3 @@
-- Add "Developer Advocate" to position
-|- Add social networks|||
-|- Create a page on the |||
-||||
-
-
-
-
-
-
 {
 	"$schema": "http://json-schema.org/draft-07/schema",
 	"$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
