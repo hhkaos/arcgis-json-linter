@@ -1,152 +1,152 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
-  "type": "object",
-  "title": "Esri Feature collection",
-  "description": "A set of geospatial features with it's attributes",
-  "default": {},
-  "examples": [
-    {
-      "features": [
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
+    "type": "object",
+    "title": "Esri Feature collection",
+    "description": "A set of geospatial features with it's attributes",
+    "default": {},
+    "examples": [
         {
-          "geometry": {
-            "x": -118.268579,
-            "y": 34.052291
-          },
-          "attributes": {
-            "Name": "Los Angeles, CA"
-          }
-        },
-        {
-          "geometry": {
-            "x": -74.009023,
-            "y": 40.709975
-          },
-          "attributes": {
-            "Name": "New York, NY"
-          }
-        }
-      ]
-    }
-  ],
-  "required": [
-    "features"
-  ],
-  "properties": {
-    "features": {
-      "$id": "#/properties/features",
-      "type": "array",
-      "title": "The features schema",
-      "description": "Geographical features",
-      "default": [],
-      "examples": [
-        [
-          {
-            "geometry": {
-              "x": -118.268579,
-              "y": 34.052291
-            },
-            "attributes": {
-              "Name": "Los Angeles, CA"
-            }
-          },
-          {
-            "geometry": {
-              "x": -74.009023,
-              "y": 40.709975
-            },
-            "attributes": {
-              "Name": "New York, NY"
-            }
-          }
-        ]
-      ],
-      "additionalItems": true,
-      "items": {
-        "$id": "#/properties/features/items",
-        "anyOf": [
-          {
-            "$id": "#/properties/features/items/anyOf/0",
-            "type": "object",
-            "title": "The first anyOf schema",
-            "description": "An explanation about the purpose of this instance.",
-            "default": {},
-            "examples": [
-              {
-                "geometry": {
-                  "x": -118.268579,
-                  "y": 34.052291
+            "features": [
+                {
+                    "geometry": {
+                        "x": -118.268579,
+                        "y": 34.052291
+                    },
+                    "attributes": {
+                        "Name": "Los Angeles, CA"
+                    }
                 },
-                "attributes": {
-                  "Name": "Los Angeles, CA"
+                {
+                    "geometry": {
+                        "x": -74.009023,
+                        "y": 40.709975
+                    },
+                    "attributes": {
+                        "Name": "New York, NY"
+                    }
                 }
-              }
+            ]
+        }
+    ],
+    "required": [
+        "features"
+    ],
+    "properties": {
+        "features": {
+            "$id": "#/properties/features",
+            "type": "array",
+            "title": "The features schema",
+            "description": "Geographical features",
+            "default": [],
+            "examples": [
+                [
+                    {
+                        "geometry": {
+                            "x": -118.268579,
+                            "y": 34.052291
+                        },
+                        "attributes": {
+                            "Name": "Los Angeles, CA"
+                        }
+                    },
+                    {
+                        "geometry": {
+                            "x": -74.009023,
+                            "y": 40.709975
+                        },
+                        "attributes": {
+                            "Name": "New York, NY"
+                        }
+                    }
+                ]
             ],
-            "required": [
-              "geometry",
-              "attributes"
-            ],
-            "properties": {
-              "geometry": {
-                "$id": "#/properties/features/items/anyOf/0/properties/geometry",
-                "type": "object",
-                "title": "The geometry schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "examples": [
-                  {
-                    "x": -118.268579,
-                    "y": 34.052291
-                  }
-                ],
-                "required": [
-                  "x",
-                  "y"
-                ],
-                "properties": {
-                  "x": {
-                    "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/x",
-                    "type": "number",
-                    "title": "The x schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0.0,
-                    "examples": [
-                      -118.268579
-                    ]
-                  },
-                  "y": {
-                    "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/y",
-                    "type": "number",
-                    "title": "The y schema",
-                    "description": "An explanation about the purpose of this instance.",
-                    "default": 0.0,
-                    "examples": [
-                      34.052291
-                    ]
-                  }
-                },
-                "additionalProperties": false
-              },
-              "attributes": {
-                "$id": "#/properties/features/items/anyOf/0/properties/attributes",
-                "type": "object",
-                "title": "The attributes schema",
-                "description": "An explanation about the purpose of this instance.",
-                "default": {},
-                "examples": [
-                  {
-                    "Name": "Los Angeles, CA"
-                  }
-                ],
-                "required": [],
-                "additionalProperties": true
-              }
-            },
-            "additionalProperties": false
-          }
-        ]
-      }
-    }
-  },
-  "additionalProperties": false
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/features/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/features/items/anyOf/0",
+                        "type": "object",
+                        "title": "Feature",
+                        "description": "Geospatial feature",
+                        "default": {},
+                        "examples": [
+                            {
+                                "geometry": {
+                                    "x": -118.268579,
+                                    "y": 34.052291
+                                },
+                                "attributes": {
+                                    "Name": "Los Angeles, CA"
+                                }
+                            }
+                        ],
+                        "required": [
+                            "geometry",
+                            "attributes"
+                        ],
+                        "properties": {
+                            "geometry": {
+                                "$id": "#/properties/features/items/anyOf/0/properties/geometry",
+                                "type": "object",
+                                "title": "Feature's geometry",
+                                "description": "X and Y coordinates",
+                                "default": {},
+                                "examples": [
+                                    {
+                                        "x": -118.268579,
+                                        "y": 34.052291
+                                    }
+                                ],
+                                "required": [
+                                    "x",
+                                    "y"
+                                ],
+                                "properties": {
+                                    "x": {
+                                        "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/x",
+                                        "type": "number",
+                                        "title": "The x schema",
+                                        "description": "x coordinate.",
+                                        "default": 0.0,
+                                        "examples": [
+                                            -118.268579
+                                        ]
+                                    },
+                                    "y": {
+                                        "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/y",
+                                        "type": "number",
+                                        "title": "The y schema",
+                                        "description": "y coordinate.",
+                                        "default": 0.0,
+                                        "examples": [
+                                            34.052291
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "attributes": {
+                                "$id": "#/properties/features/items/anyOf/0/properties/attributes",
+                                "type": "object",
+                                "title": "Feature attributes",
+                                "description": "Attributes (a.k.a. properties) of the feature.",
+                                "default": {},
+                                "examples": [
+                                    {
+                                        "Name": "Los Angeles, CA"
+                                    }
+                                ],
+                                "required": [],
+                                "additionalProperties": true
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
 }
