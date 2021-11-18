@@ -1,152 +1,192 @@
+- Add "Developer Advocate" to position
+|- Add social networks|||
+|- Create a page on the |||
+||||
+
+
+
+
+
+
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
-    "type": "object",
-    "title": "Esri Feature collection",
-    "description": "A set of geospatial features with it's attributes",
-    "default": {},
-    "examples": [
-        {
-            "features": [
-                {
-                    "geometry": {
-                        "x": -118.268579,
-                        "y": 34.052291
-                    },
-                    "attributes": {
-                        "Name": "Los Angeles, CA"
-                    }
-                },
-                {
-                    "geometry": {
-                        "x": -74.009023,
-                        "y": 40.709975
-                    },
-                    "attributes": {
-                        "Name": "New York, NY"
-                    }
-                }
-            ]
-        }
-    ],
-    "required": [
-        "features"
-    ],
-    "properties": {
-        "features": {
-            "$id": "#/properties/features",
-            "type": "array",
-            "title": "The features schema",
-            "description": "Geographical features",
-            "default": [],
-            "examples": [
-                [
-                    {
-                        "geometry": {
-                            "x": -118.268579,
-                            "y": 34.052291
-                        },
-                        "attributes": {
-                            "Name": "Los Angeles, CA"
-                        }
-                    },
-                    {
-                        "geometry": {
-                            "x": -74.009023,
-                            "y": 40.709975
-                        },
-                        "attributes": {
-                            "Name": "New York, NY"
-                        }
-                    }
-                ]
-            ],
-            "additionalItems": true,
-            "items": {
-                "$id": "#/properties/features/items",
-                "anyOf": [
-                    {
-                        "$id": "#/properties/features/items/anyOf/0",
-                        "type": "object",
-                        "title": "Feature",
-                        "description": "Geospatial feature",
-                        "default": {},
-                        "examples": [
-                            {
-                                "geometry": {
-                                    "x": -118.268579,
-                                    "y": 34.052291
-                                },
-                                "attributes": {
-                                    "Name": "Los Angeles, CA"
-                                }
-                            }
-                        ],
-                        "required": [
-                            "geometry",
-                            "attributes"
-                        ],
-                        "properties": {
-                            "geometry": {
-                                "$id": "#/properties/features/items/anyOf/0/properties/geometry",
-                                "type": "object",
-                                "title": "Feature's geometry",
-                                "description": "X and Y coordinates",
-                                "default": {},
-                                "examples": [
-                                    {
-                                        "x": -118.268579,
-                                        "y": 34.052291
-                                    }
-                                ],
-                                "required": [
-                                    "x",
-                                    "y"
-                                ],
-                                "properties": {
-                                    "x": {
-                                        "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/x",
-                                        "type": "number",
-                                        "title": "The x schema",
-                                        "description": "x coordinate.",
-                                        "default": 0.0,
-                                        "examples": [
-                                            -118.268579
-                                        ]
-                                    },
-                                    "y": {
-                                        "$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/y",
-                                        "type": "number",
-                                        "title": "The y schema",
-                                        "description": "y coordinate.",
-                                        "default": 0.0,
-                                        "examples": [
-                                            34.052291
-                                        ]
-                                    }
-                                },
-                                "additionalProperties": false
-                            },
-                            "attributes": {
-                                "$id": "#/properties/features/items/anyOf/0/properties/attributes",
-                                "type": "object",
-                                "title": "Feature attributes",
-                                "description": "Attributes (a.k.a. properties) of the feature.",
-                                "default": {},
-                                "examples": [
-                                    {
-                                        "Name": "Los Angeles, CA"
-                                    }
-                                ],
-                                "required": [],
-                                "additionalProperties": true
-                            }
-                        },
-                        "additionalProperties": false
-                    }
-                ]
-            }
-        }
-    },
-    "additionalProperties": false
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
+	"type": "object",
+	"title": "Esri Feature collection",
+	"description": "A set of geospatial features with it's attributes",
+	"default": {},
+	"examples": [{
+		"spatialReference": {
+			"wkid": 4326,
+			"latestWkid": 102000
+		},
+		"features": [{
+				"geometry": {
+					"x": -118.268579,
+					"y": 34.052291
+				},
+				"attributes": {
+					"Name": "Los Angeles, CA"
+				}
+			},
+			{
+				"geometry": {
+					"x": -74.009023,
+					"y": 40.709975
+				},
+				"attributes": {
+					"Name": "New York, NY"
+				}
+			}
+		]
+	}],
+	"required": [
+		"features"
+	],
+	"properties": {
+		"spatialReference": {
+			"$id": "#/properties/spatialReference",
+			"type": "object",
+			"title": "The spatialReference schema",
+			"description": "Define the coordinate system and spatial properties for geographic data",
+			"default": {},
+			"examples": [{
+				"wkid": 4326,
+				"latestWkid": 102000
+			}],
+			"required": [
+				"wkid",
+				"latestWkid"
+			],
+			"properties": {
+				"wkid": {
+					"$id": "#/properties/spatialReference/properties/wkid",
+					"type": "integer",
+					"title": "The wkid schema",
+					"description": "Well-known ID (WKID) that defines the spatial reference",
+					"default": 0,
+					"examples": [
+						4326
+					]
+				},
+				"latestWkid": {
+					"$id": "#/properties/spatialReference/properties/latestWkid",
+					"type": "integer",
+					"title": "The latestWkid schema",
+					"description": " Identifies the current wkid value associated with the same spatial reference. For example a WKID of '102100' (Web Mercator) has a latestWKid of '3857'.",
+					"default": 0,
+					"examples": [
+						102000
+					]
+				}
+			},
+			"additionalProperties": true
+		},
+		"features": {
+			"$id": "#/properties/features",
+			"type": "array",
+			"title": "The features schema",
+			"description": "Geographical features",
+			"default": [],
+			"examples": [
+				[{
+						"geometry": {
+							"x": -118.268579,
+							"y": 34.052291
+						},
+						"attributes": {
+							"Name": "Los Angeles, CA"
+						}
+					},
+					{
+						"geometry": {
+							"x": -74.009023,
+							"y": 40.709975
+						},
+						"attributes": {
+							"Name": "New York, NY"
+						}
+					}
+				]
+			],
+			"additionalItems": true,
+			"items": {
+				"$id": "#/properties/features/items",
+				"anyOf": [{
+					"$id": "#/properties/features/items/anyOf/0",
+					"type": "object",
+					"title": "Feature",
+					"description": "Geospatial feature",
+					"default": {},
+					"examples": [{
+						"geometry": {
+							"x": -118.268579,
+							"y": 34.052291
+						},
+						"attributes": {
+							"Name": "Los Angeles, CA"
+						}
+					}],
+					"required": [
+						"geometry",
+						"attributes"
+					],
+					"properties": {
+						"geometry": {
+							"$id": "#/properties/features/items/anyOf/0/properties/geometry",
+							"type": "object",
+							"title": "Feature's geometry",
+							"description": "X and Y coordinates",
+							"default": {},
+							"examples": [{
+								"x": -118.268579,
+								"y": 34.052291
+							}],
+							"required": [
+								"x",
+								"y"
+							],
+							"properties": {
+								"x": {
+									"$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/x",
+									"type": "number",
+									"title": "The x schema",
+									"description": "x coordinate.",
+									"default": 0.0,
+									"examples": [
+										-118.268579
+									]
+								},
+								"y": {
+									"$id": "#/properties/features/items/anyOf/0/properties/geometry/properties/y",
+									"type": "number",
+									"title": "The y schema",
+									"description": "y coordinate.",
+									"default": 0.0,
+									"examples": [
+										34.052291
+									]
+								}
+							},
+							"additionalProperties": false
+						},
+						"attributes": {
+							"$id": "#/properties/features/items/anyOf/0/properties/attributes",
+							"type": "object",
+							"title": "Feature attributes",
+							"description": "Attributes (a.k.a. properties) of the feature.",
+							"default": {},
+							"examples": [{
+								"Name": "Los Angeles, CA"
+							}],
+							"required": [],
+							"additionalProperties": true
+						}
+					},
+					"additionalProperties": false
+				}]
+			}
+		}
+	},
+	"additionalProperties": false
 }
