@@ -38,7 +38,7 @@
 			"$id": "#/properties/spatialReference",
 			"type": "object",
 			"title": "The spatialReference schema",
-			"description": "Define the coordinate system and spatial properties for geographic data",
+			"description": "Define the coordinate system and spatial properties for geographic data. Default: WGS84 ",
 			"default": {},
 			"examples": [{
 				"wkid": 4326,
