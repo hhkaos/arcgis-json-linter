@@ -1,0 +1,48 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://arcgis.com/schema/spatialreference",
+	"title": "Spatial Reference",
+	"description": "Define the coordinate system and spatial properties for geographic data.",
+	"type": "object",
+	"properties": {
+		"wkid": {
+			"description": "The well-known ID of a spatial reference. For example a WKID '102100' (Web Mercator) or WKID 4326 (Geographic coordinate system WGS 1984, a.k.a. lat/lon)",
+			"type": "number",
+			"examples": [10200, 4326]
+		},
+		"latestWkid": {
+			"description": "Identifies the current wkid value associated with the same spatial reference. For example a WKID of '102100' (Web Mercator) has a latestWKid of '3857'.",
+			"type": "number",
+			"examples": [3857]
+		},
+		"vcsWkid": {
+			"description": "The wkid value of the vertical coordinate system.",
+			"type": "number",
+			"default": 0
+		},
+		"latestVcsWkid": {
+			"description": "The current wkid value of the vertical coordinate system.",
+			"type": "number",
+			"default": 0
+		}
+	},
+	"oneOf": [{
+			"required": ["wkid"]
+		},
+		{
+			"required": ["latestWkid"]
+		}
+	],
+	"additionalProperties": false,
+	"examples": [{
+			"wkid": 102100,
+			"latestWkid": 3857
+		},
+		{
+			"wkid": 4326
+		},
+		{
+			"latestWkid": 3857
+		}
+	]
+}

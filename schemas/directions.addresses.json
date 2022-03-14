@@ -1,0 +1,147 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://arcgis.com/schema/directions/addresses",
+	"title": "addresses",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"records": {
+			"type": "array",
+			"contains": {
+				"oneOf": [{
+						"$ref": "#/$defs/singleLineRecords"
+					},
+					{
+						"$ref": "#/$defs/multiFieldAddressRecords"
+					}
+				]
+
+			}
+		}
+	},
+	"required": [
+		"records"
+	],
+	"$defs": {
+		"singleLineRecords": {
+			"type": "object",
+			"properties": {
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"singleLine": {
+							"type": "string",
+							"description": "Each record must include an 'address' or 'singleLine' attribute. Specifies the location to be geocoded. This can be a street address, place-name, postal code, or POI. The input address components need to be formatted as a single string."
+						}
+					}
+				}
+			}
+		},
+		"multiFieldAddressRecords": {
+			"type": "object",
+			"properties": {
+				"OBJECTID": {
+					"type": "integer",
+					"description": "Each record must include an OBJECTID attribute with a unique value."
+				},
+				"address": {
+					"type": "string",
+					"description": "Each record must include an 'address' or 'singleLine' attribute.",
+					"examples": [
+						"380 New York Street",
+						"Avenida Revolucion 8208"
+					]
+				},
+				"address2": {
+					"type": "string",
+					"description": "A string that represents the second line of a street address. This can include street name/house number, building name, place name, or subunit.",
+					"examples": [
+						"Beetham Tower"
+					]
+				},
+				"address3": {
+					"type": "string",
+					"description": "A string that represents the third line of a street address. This can include street name/house number, building name, place name, or subunit.",
+					"examples": [
+						"Suite 4208"
+					]
+				},
+				"neighborhood": {
+					"type": "string",
+					"description": "The smallest administrative division associated with an address, typically, a neighborhood or a section of a larger populated place. A neighborhood is a subdivision of a city.",
+					"examples": [
+						"Herrera"
+					]
+				},
+				"city": {
+					"type": "string",
+					"description": "The next largest administrative division associated with an address, typically, a city or municipality. A city is a subdivision of a subregion or a region.",
+					"examples": ["Los Angeles", "Tijuana"]
+				},
+				"subregion": {
+					"type": "string",
+					"description": "The next largest administrative division associated with an address. Depending on the country, a subregion can represent a county, state, or province.",
+					"examples": ["Vienne"]
+				},
+				"region": {
+					"type": "string",
+					"description": "The largest administrative division associated with an address, typically, a state or province (e.g. state)",
+					"examples": [
+						"Florida", "Baja California"
+					]
+				}
+			},
+			"required": [
+				"OBJECTID"
+			]
+		}
+	},
+	"examples": [{
+			"records": [{
+					"attributes": {
+						"OBJECTID": 1,
+						"address": "380 New York St",
+						"neighborhood": "",
+						"city": "Redlands",
+						"subregion": "",
+						"region": "CA"
+					}
+				},
+				{
+					"attributes": {
+						"OBJECTID": 2,
+						"address": "1 World Way",
+						"neighborhood": "",
+						"city": "Los Angeles",
+						"subregion": "",
+						"region": "CA"
+					}
+				},
+				{
+					"attributes": {
+						"OBJECTID": 3,
+						"singleLine": "380 New York St, Redlands, California 92373"
+					}
+				}
+			]
+		},
+		{
+			"records": [{
+					"attributes": {
+						"SingleLine": "Buckingham Palace"
+					}
+				},
+				{
+					"attributes": {
+						"SingleLine": "Bernardis Restaurant London"
+					}
+				},
+				{
+					"attributes": {
+						"singleLine": "380 New York St, Redlands, California 92373"
+					}
+				}
+			]
+		}
+	]
+}

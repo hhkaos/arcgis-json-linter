@@ -1,0 +1,86 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://arcgis.com/schema/extent",
+    "title": "Extent",
+    "description": "An extent is a bounding rectangle with points that delineate an area for a map or scene.",
+    "$comment": "Which is the difference between an envelope, extent and a bounding box?",
+    "type": "object",
+    "properties": {
+        "xmin": {
+            "description": "The min coordinate along x-axis (lower left corner)",
+            "type": "number",
+            "default": 0
+        },
+        "ymin": {
+            "description": "The min coordinate along y-axis (lower left corner)",
+            "type": "number",
+            "default": 0
+        },
+        "xmax": {
+            "description": "The max coordinate along x-axis (upper right corner)",
+            "type": "number",
+            "default": 0
+        },
+        "ymax": {
+            "description": "The max coordinate along y-axis (upper right corner)",
+            "type": "number",
+            "default": 0
+        },
+        "zmin": { 
+            "type": "number",
+            "description": "The min coordinate along z-axis",
+            "default": 0
+        },
+        "zmax": { 
+            "type": "number",
+            "description": "The max coordinate along z-axis",
+            "default": 0
+        },
+        "mmin": { 
+            "type": "number",
+            "description": "The min measure value",
+            "default": 0
+        },
+        "mmax": { 
+            "type": "number",
+            "description": "The max measure value",
+            "default": 0
+        },
+        "spatialReference": { 
+            "$ref": "https://arcgis.com/schema/spatialreference"
+        }
+    },
+    "additionalProperties": false,
+    "required": ["xmin", "ymin", "xmax", "ymax"], 
+    "examples": [
+        {
+            "xmin": -9177811,
+            "ymin": 4247000,
+            "xmax": -9176791,
+            "ymax": 4247784,
+            "spatialReference": 102100
+        },
+        {
+            "spatialReference": {
+                "wkid": 4326
+            },
+            "xmin": -116.616823,
+            "ymin": 33.784141,
+            "xmax": -116.397096,
+            "ymax": 33.871983
+        },
+        {
+            "xmin": -109.55,
+            "ymin": 25.76,
+            "xmax": -86.39,
+            "ymax": 49.94, 
+            "zmin": -12.0,
+            "zmax": 13.3, 
+            "spatialReference": {
+              "wkid": 4326
+            }
+          }
+
+    ]
+
+}

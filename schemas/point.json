@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arcgis.com/schema/Point",
+  "title": "Point geometry",
+  "description": "A point (specified as esriGeometryPoint) contains x and y fields along with a spatialReference field.",
+  "type": "object",
+  "properties": {
+    "x": {
+        "type": "number",
+        "title": "The coordinate along x-axis",
+        "default": 0
+    },
+    "y": {
+        "type": "number",
+        "title": "The coordinate along y-axis",
+        "default": 0
+    },
+    "z": {
+      "type": "number",
+      "title": "The coordinate along z-axis (elevation)",
+      "default": 0
+    },
+    "m": {
+      "type": "number",
+      "title": "The m-coordinate of the point in map units",
+      "description": "M-values (measure) allow attribute values to be stored at the vertex of a point. A common usage for storing a measurement in the vertices along a linear feature are linear referencing applications.",
+      "default": 0
+    },
+    "spatialReference": { 
+      "$ref": "https://arcgis.com/schema/spatialreference"
+    }
+  },
+  "required": ["x", "y", "spatialReference"],
+  "additionalProperties": true,
+  "examples": [
+    {
+        "x": -13046165.572,
+        "y": 4036389.847,
+        "spatialReference": {
+            "wkid": 102100
+        }
+    },
+    {
+      "x": -118.15,
+      "y": 33.80,
+      "spatialReference": {
+        "wkid": 4326
+      }
+    },
+    {
+      "x": -118.15,
+      "y": 33.80,
+      "z": 10.0,
+      "spatialReference": {
+        "wkid": 4326
+      }
+    }
+  ]
+}

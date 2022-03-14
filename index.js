@@ -18,6 +18,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
 })
 
+app.get('/rest', (req, res) => {
+    res.sendFile(path.join(__dirname, '/rest-api.html'));
+})
+
 app.post('/validate', (req, res) => {
     const validate = ajv.compile(Extent)
     let response;

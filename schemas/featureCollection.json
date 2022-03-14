@@ -1,6 +1,6 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema",
-	"$id": "https://github.com/hhkaos/arcgis-json-schemas/Feature.collection.schema.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://arcgis.com/schema/FeatureCollection",
 	"type": "object",
 	"title": "Esri Feature collection",
 	"description": "A set of geospatial features with it's attributes",
