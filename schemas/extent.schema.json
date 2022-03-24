@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://arcgis.com/schema/extent",
+    "$id": "https://raw.githubusercontent.com/hhkaos/arcgis-json-linter/main/schemas/extent.schema.json",
     "title": "Extent",
     "description": "An extent is a bounding rectangle with points that delineate an area for a map or scene.",
     "$comment": "Which is the difference between an envelope, extent and a bounding box?",

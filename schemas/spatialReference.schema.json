@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"$id": "https://arcgis.com/schema/spatialreference",
+	"$id": "https://raw.githubusercontent.com/hhkaos/arcgis-json-linter/main/schemas/spatialreference.schema.json",
 	"title": "Spatial Reference",
 	"description": "Define the coordinate system and spatial properties for geographic data.",
 	"type": "object",
